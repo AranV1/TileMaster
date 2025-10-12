@@ -7,10 +7,12 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 moveInput;
     Rigidbody2D myRigidbody;
+    Animator anim;
 
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     void Update()
     {
@@ -27,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     {
         myRigidbody.linearVelocity = new Vector2(moveInput.x*moveSpeed, myRigidbody.linearVelocity.y); //myRigidbody.linearVelocity.y oznacza ze w osi y obiekt dziala
                                                                                                        //zgodnie z fizyka (np grawitacja)
+        anim.SetBool("isRunning", Mathf.Abs(myRigidbody.linearVelocity.x) > Mathf.Epsilon);
 
     }
 
