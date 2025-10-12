@@ -8490,8 +8490,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5562555459133757230, guid: 20fd5e830960c3d458ba1ac5b2c28d78, type: 3}
-      propertyPath: m_Constraints
-      value: 4
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562555459133757230, guid: 20fd5e830960c3d458ba1ac5b2c28d78, type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562555459133757230, guid: 20fd5e830960c3d458ba1ac5b2c28d78, type: 3}
+      propertyPath: m_LinearDamping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5562555459133757230, guid: 20fd5e830960c3d458ba1ac5b2c28d78, type: 3}
+      propertyPath: m_AngularDamping
+      value: 0.14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
