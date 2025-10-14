@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
             myRigidbody.gravityScale = gravityScaleAtStart;
             return;
         }
+        anim.SetBool("isClimbing", Mathf.Abs(myRigidbody.linearVelocity.y) > Mathf.Epsilon);
         myRigidbody.gravityScale = 0f;
         myRigidbody.linearVelocity = new Vector2(myRigidbody.linearVelocity.x, moveInput.y * climbSpeed);
     }
