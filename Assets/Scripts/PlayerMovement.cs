@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] float climbSpeed = 5f;
+    [SerializeField] Vector2 deathBlow = new Vector2(10f, 25f);
 
 
     Vector2 moveInput;
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D capsuleCl;
     BoxCollider2D boxCl;
     float gravityScaleAtStart;
+
+    bool isAlive = true;
 
     void Start()
     {
@@ -25,18 +28,22 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        if (!isAlive) { return; }
         Run();
         FlipSprite();
         ClimbLadder();
+        Die();
     }
 
     void OnMove(InputValue value)
     {
+        if (!isAlive) { return; }
         moveInput = value.Get<Vector2>();
     }
 
     void OnJump(InputValue value)
     {
+        if (!isAlive) { return; }
         if (!boxCl.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; } //sprawdza czy gracz stoi na ziemi
         if (value.isPressed)
         {
@@ -71,5 +78,15 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("isClimbing", Mathf.Abs(myRigidbody.linearVelocity.y) > Mathf.Epsilon);
         myRigidbody.gravityScale = 0f;
         myRigidbody.linearVelocity = new Vector2(myRigidbody.linearVelocity.x, moveInput.y * climbSpeed);
+    }
+
+    void Die()
+    {
+        if(capsuleCl.IsTouchingLayers(LayerMask.GetMask("Monster", "Hazards")))
+        {
+            myRigidbody.linearVelocity = deathBlow;
+            isAlive = false;
+            anim.SetTrigger("Dying");
+        }
     }
 }
