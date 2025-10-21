@@ -95,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
             myRigidbody.linearVelocity = deathBlow;
             isAlive = false;
             anim.SetTrigger("Dying");
+            FindAnyObjectByType<GameSession>().ProcessPlayerDeath();
         }
     }
 }
