@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickupSFX: {fileID: 8300000, guid: 45f1a7d13428f7e46877663f1cf3811d, type: 3}
+  pointsForCoinPickup: 100
 --- !u!82 &5399198573410832421
 AudioSource:
   m_ObjectHideFlags: 0
@@ -175,7 +176,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.53
   m_Pitch: 1.82
   Loop: 0
   Mute: 0
