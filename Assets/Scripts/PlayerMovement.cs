@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         ClimbLadder();
         Die();
-        //Jumping();
     }
 
     void OnMove(InputValue value)
@@ -57,13 +56,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /*void Jumping()
-    {
-        if (!boxCl.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; } //sprawdza czy gracz stoi na ziemi
-
-        anim.SetBool("Rising", myRigidbody.linearVelocity.y > Mathf.Epsilon);
-        anim.SetBool("Falling", myRigidbody.linearVelocity.y < Mathf.Epsilon);
-    }*/
+    
 
     void Run()
     {
