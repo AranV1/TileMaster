@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 deathBlow = new Vector2(10f, 25f);
     [SerializeField] GameObject bullet;
     [SerializeField] Transform gunTransform;
+    [SerializeField] AudioClip shootSFX;
 
 
     Vector2 moveInput;
@@ -35,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         FlipSprite();
         ClimbLadder();
         Die();
+        //Jumping();
     }
 
     void OnMove(InputValue value)
@@ -50,8 +53,17 @@ public class PlayerMovement : MonoBehaviour
         if (value.isPressed)
         {
             myRigidbody.linearVelocity += new Vector2(0f, jumpSpeed);
+           
         }
     }
+
+    /*void Jumping()
+    {
+        if (!boxCl.IsTouchingLayers(LayerMask.GetMask("Ground"))) { return; } //sprawdza czy gracz stoi na ziemi
+
+        anim.SetBool("Rising", myRigidbody.linearVelocity.y > Mathf.Epsilon);
+        anim.SetBool("Falling", myRigidbody.linearVelocity.y < Mathf.Epsilon);
+    }*/
 
     void Run()
     {
@@ -86,9 +98,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAlive) { return; }
         Instantiate(bullet, gunTransform.position, transform.rotation);
+        AudioSource.PlayClipAtPoint(shootSFX, transform.position);
+        anim.SetTrigger("Attack");
     }
 
-    void Die()
+
+void Die()
     {
         if(capsuleCl.IsTouchingLayers(LayerMask.GetMask("Monster", "Hazards")))
         {

@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3952640a125539144bb4ecc15652d717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupSFX: {fileID: 8300000, guid: 45f1a7d13428f7e46877663f1cf3811d, type: 3}
+  pickupSFX: {fileID: 8300000, guid: 1264675635eb9af479b8403335f97ebb, type: 3}
   pointsForCoinPickup: 100
 --- !u!82 &5399198573410832421
 AudioSource:
@@ -182,7 +182,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 68
+  Priority: 179
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
